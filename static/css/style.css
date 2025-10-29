@@ -1,13 +1,92 @@
+/* Genel ayarlar */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #66A5AD; /* Ana arka plan rengi */
+    color: #C4DFE6; /* Yazı rengi */
+    overflow-x: hidden;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 220px;
+    background-color: #003B46; /* Sidebar rengi */
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+    top: 0;
+    left: 0;
+    border-right: 2px solid #003B46;
+}
+
+.sidebar a {
+    display: block;
+    color: #C4DFE6;
+    padding: 15px 20px;
+    text-decoration: none;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    background-color: #C4DFE6;
+    color: #003B46;
+}
+
+/* İçerik alanı */
+.content {
+    margin-left: 220px;
+}
+
+/* Her section full screen ve arka plan rengi */
 .page-section {
-    height: 100vh; /* Her section ekran yüksekliği kadar */
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    transition: all 0.8s ease; /* Smooth transition */
+    transition: all 0.8s ease;
+    background-color: #66A5AD; /* Section arka planı */
 }
 
-.page-section img {
-    max-width: 80%;
-    border-radius: 10px;
+.page-section h1,
+.page-section h2,
+.page-section p {
+    color: #C4DFE6; /* Metin rengi */
+}
+
+/* Başlık rengi */
+.main-title {
+    text-align: center;
+    font-size: 60px;
+    color: #003B46;
+    margin-top: 50px;
+}
+
+/* Mobil uyumlu */
+@media screen and (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        border-right: none;
+    }
+    .sidebar a {
+        float: none;
+        text-align: center;
+    }
+    .content {
+        margin-left: 0;
+        padding: 20px;
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .main-title {
+        font-size: 45px;
+    }
+    .content {
+        font-size: 18px;
+    }
 }
