@@ -2,26 +2,26 @@
 body {
     margin: 0;
     font-family: 'Arial', sans-serif;
-    background-color: #1e1e2f; /* Koyu arka plan */
-    color: #e0e0e0; /* Yazı rengi */
+    background-color: #66A5AD; /* Yeni arka plan rengi */
+    color: #C4DFE6; /* Yazı rengi */
 }
 
 /* Sidebar */
 .sidebar {
     width: 220px;
-    background-color: #2b2b3a; /* Koyu sidebar */
+    background-color: #003B46; /* Yeni sidebar rengi */
     position: fixed;
     height: 100%;
     overflow: auto;
     top: 0;
     left: 0;
-    border-right: 2px solid #444;
+    border-right: 2px solid #003B46; /* Sidebar kenarlığı başlık rengiyle aynı */
 }
 
 /* Sidebar linkleri */
 .sidebar a {
     display: block;
-    color: #ffffff;
+    color: #C4DFE6;
     padding: 15px 20px;
     text-decoration: none;
     font-size: 18px;
@@ -29,8 +29,8 @@ body {
 }
 
 .sidebar a:hover {
-    background-color: #ff8928; /* Hover renk */
-    color: #1e1e2f;
+    background-color: #C4DFE6; /* Hover yazı rengi */
+    color: #003B46; /* Hover arka plan rengi */
 }
 
 /* İçerik alanı */
@@ -43,7 +43,7 @@ body {
 .main-title {
     text-align: center;
     font-size: 60px;
-    color: #ff414e; /* Şık renk */
+    color: #003B46; /* Başlık rengi */
     margin-top: 50px;
 }
 
