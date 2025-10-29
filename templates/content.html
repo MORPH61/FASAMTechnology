@@ -16,7 +16,7 @@
 <div class="content">
     {% for page in pages %}
         <section id="section-{{ loop.index0 }}" class="page-section">
-            <h1 class="main-title">{{ page.title }}</h1>
+            <h1>{{ page.title }}</h1>
             <p>{{ page.text }}</p>
             {% if page.images %}
                 {% for img in page.images %}
@@ -28,19 +28,24 @@
 </div>
 
 <script>
-// Smooth scroll ayarı
+// Mouse wheel ile section geçiş
 const sections = document.querySelectorAll('.page-section');
 let current = 0;
+let isScrolling = false;
 
 window.addEventListener('wheel', function(e) {
+    if (isScrolling) return; // animasyon bitmeden engelle
+    isScrolling = true;
+
     if (e.deltaY > 0) {
-        // Aşağı kaydır
         if (current < sections.length - 1) current++;
     } else {
-        // Yukarı kaydır
         if (current > 0) current--;
     }
+
     sections[current].scrollIntoView({ behavior: 'smooth' });
+
+    setTimeout(() => { isScrolling = false; }, 800); // animasyon süresi ile eşleştir
 });
 </script>
 
