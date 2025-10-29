@@ -9,24 +9,40 @@
 
 <div class="sidebar">
     {% for page in pages %}
-        <a href="{{ '/' if page.route=='index' else '/' + page.route }}">{{ page.title }}</a>
+        <a href="#section-{{ loop.index0 }}">{{ page.title }}</a>
     {% endfor %}
 </div>
 
 <div class="content">
-    {% if content.route == 'index' %}
-        <h1 class="main-title">{{ content.title }}</h1>
-        <p>{{ content.text }}</p>
-    {% else %}
-        <h2>{{ content.title }}</h2>
-        <p>{{ content.text }}</p>
-        {% if content.images %}
-            {% for img in content.images %}
-                <img src="{{ url_for('static', filename='images/' + img) }}" style="max-width:100%; margin:10px 0; border-radius:10px;">
-            {% endfor %}
-        {% endif %}
-    {% endif %}
+    {% for page in pages %}
+        <section id="section-{{ loop.index0 }}" class="page-section">
+            <h1 class="main-title">{{ page.title }}</h1>
+            <p>{{ page.text }}</p>
+            {% if page.images %}
+                {% for img in page.images %}
+                    <img src="{{ url_for('static', filename='images/' + img) }}" style="max-width:100%; margin:10px 0; border-radius:10px;">
+                {% endfor %}
+            {% endif %}
+        </section>
+    {% endfor %}
 </div>
+
+<script>
+// Smooth scroll ayarı
+const sections = document.querySelectorAll('.page-section');
+let current = 0;
+
+window.addEventListener('wheel', function(e) {
+    if (e.deltaY > 0) {
+        // Aşağı kaydır
+        if (current < sections.length - 1) current++;
+    } else {
+        // Yukarı kaydır
+        if (current > 0) current--;
+    }
+    sections[current].scrollIntoView({ behavior: 'smooth' });
+});
+</script>
 
 </body>
 </html>
