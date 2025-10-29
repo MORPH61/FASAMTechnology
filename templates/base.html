@@ -2,34 +2,29 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <title>FASAM Web Site</title>
+    <title>{{ content.title }}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <span id="toggle-btn">&#9776;</span>
-
     <div class="sidebar">
-        <h2>Menü</h2>
-        <ul>
-            {% for p in pages %}
-            <li><a href="{{ '/' if p.route == 'index' else '/' + p.route }}">{{ p.title }}</a></li>
-            {% endfor %}
-        </ul>
+        {% for page in pages %}
+            <a href="{{ '/' if page.route=='index' else '/' + page.route }}">{{ page.title }}</a>
+        {% endfor %}
     </div>
 
     <div class="content">
-        {% block content %}{% endblock %}
+        {% if content.route == 'index' %}
+            <h1 class="main-title">{{ content.title }}</h1>
+            <p>{{ content.text }}</p>
+        {% else %}
+            <h2>{{ content.title }}</h2>
+            <p>{{ content.text }}</p>
+            {% if content.images %}
+                {% for img in content.images %}
+                    <img src="{{ url_for('static', filename='images/' + img) }}" style="max-width:100%; margin:10px 0;">
+                {% endfor %}
+            {% endif %}
+        {% endif %}
     </div>
-
-    <script>
-    const toggleBtn = document.getElementById('toggle-btn');
-    const sidebar = document.querySelector('.sidebar');
-    const content = document.querySelector('.content');
-
-    toggleBtn.addEventListener('click', () => {
-        sidebar.classList.toggle('active');
-        content.classList.toggle('active');
-    });
-    </script>
 </body>
 </html>
